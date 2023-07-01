@@ -25,19 +25,19 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
 
 def check_website(request):
 
-    return 'ciao'
-    # project_id = 'website-checker-v2'
-    # secret_manager = secretmanager.SecretManagerServiceClient()
-    # sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
-    # receiver_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/receiver_email/versions/latest").payload.data.decode('UTF-8')
-    # sender_password = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_password/versions/latest").payload.data.decode('UTF-8')
+    project_id = 'website-checker-v2'
+    secret_manager = secretmanager.SecretManagerServiceClient()
+    sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
+    receiver_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/receiver_email/versions/latest").payload.data.decode('UTF-8')
+    sender_password = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_password/versions/latest").payload.data.decode('UTF-8')
     
-    # url = "https://www.ticketone.it/artist/cigarettes-after-sex/"
-    # headers = {
-    #     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
-    # }
-    # response = requests.get(url, headers=headers)
-    # status_code = response.status_code
+    url = "https://www.ticketone.it/artist/cigarettes-after-sex/"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+    }
+    response = requests.get(url, headers=headers)
+    status_code = response.status_code
+    return status_code
     # current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
     # client = storage.Client()
