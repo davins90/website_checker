@@ -79,6 +79,6 @@ def check_website(request):
 #         )
 #         return 'Website content unchanged', 200
 
-# if __name__ == '__main__':
-#     logging.info("ciao")
-#     check_website(request=None)
+if __name__ == '__main__':
+    logging.info("ciao")
+    check_website(request=None)
