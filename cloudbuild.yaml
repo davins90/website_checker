@@ -1,11 +1,13 @@
 steps:
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+- name: 'gcr.io/cloud-builders/gcloud'
   args:
-  - gcloud
   - functions
   - deploy
-  - website_checker    # replace with your actual function name
-  - --region=europe-west6  # replace with your actual function region
+  - check_website
   - --source=.
+  - --runtime=python310
   - --trigger-http
-  - --runtime=python39  # replace with your actual runtime
+  - --allow-unauthenticated
+  - --region=europe-west1
+  - --entry-point=check_website
+  - --service-account=service-account-v1@website-checker-v2.iam.gserviceaccount.com

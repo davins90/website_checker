@@ -24,7 +24,7 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
     server.quit()
 
 def check_website(request):
-    project_id = 'website-checker-391517'
+    project_id = 'website-checker-v2'
     secret_manager = secretmanager.SecretManagerServiceClient()
     sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
     receiver_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/receiver_email/versions/latest").payload.data.decode('UTF-8')
@@ -39,7 +39,7 @@ def check_website(request):
     current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
     client = storage.Client()
-    bucket = client.get_bucket('website_hashing_response_folder')
+    bucket = client.get_bucket('website_hashing_response')
     blob = storage.Blob('website_data.txt', bucket)
     
     if blob.exists(client):
