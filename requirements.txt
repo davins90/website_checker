@@ -1,0 +1,7 @@
+requests==2.26.0
+google-cloud-storage==1.42.0
+google-cloud-secret-manager==2.7.1
+hashlib==20081119
+smtplib==1.0.1
+email-mime-multipart==0.0.3
+email-mime-text==0.0.3
