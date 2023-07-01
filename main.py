@@ -1,12 +1,10 @@
 import hashlib
-import requests
 from google.cloud import storage
 from google.cloud import secretmanager
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 import logging
-import functions_framework
 
 
 def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, password):
@@ -24,9 +22,8 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
     server.sendmail(from_addr, to_addr, text)
     server.quit()
 
-@functions_framework.http
 def check_website(request):
-
+    import requests
     project_id = 'website-checker-v2'
     secret_manager = secretmanager.SecretManagerServiceClient()
     sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
@@ -39,7 +36,7 @@ def check_website(request):
     # }
     
     response = requests.get(url)
-    return response.raise_for_status()
+    return response
     # status_code = response.status_code
     # current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
