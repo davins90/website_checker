@@ -30,14 +30,14 @@ def check_website(request):
     sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
     receiver_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/receiver_email/versions/latest").payload.data.decode('UTF-8')
     sender_password = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_password/versions/latest").payload.data.decode('UTF-8')
-    
-    url = "https://www.ticketone.it/artist/cigarettes-after-sex/"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
-    }
-    response = requests.get(url)
-    status_code = response.status_code
-    return status_code
+    return 'ciao'
+
+    # url = "https://www.ticketone.it/artist/cigarettes-after-sex/"
+    # headers = {
+    #     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+    # }
+    # response = requests.get(url, headers=headers)
+    # status_code = response.status_code
     # current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
     # client = storage.Client()
