@@ -1,4 +1,3 @@
-import os
 import hashlib
 import requests
 from google.cloud import storage
@@ -23,7 +22,7 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
     server.quit()
 
 def check_website(request):
-    project_id = os.environ.get('GCP_PROJECT')
+    project_id = 'website-checker-391517'
     secret_manager = secretmanager.SecretManagerServiceClient()
     sender_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/sender_email/versions/latest").payload.data.decode('UTF-8')
     receiver_email = secret_manager.access_secret_version(name=f"projects/{project_id}/secrets/receiver_email/versions/latest").payload.data.decode('UTF-8')
