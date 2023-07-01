@@ -5,6 +5,8 @@ from google.cloud import secretmanager
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+import logging
+
 
 def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, password):
     msg = MIMEMultipart()
@@ -71,5 +73,5 @@ def check_website(request):
         return 'Website content unchanged', 200
 
 if __name__ == '__main__':
-    print("ciao")
+    logging.info("ciao")
     check_website(request=None)
