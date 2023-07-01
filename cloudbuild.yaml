@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - website_checker    # replace with your actual function name
+  - --region=europe-west6  # replace with your actual function region
+  - --source=.
+  - --trigger-http
+  - --runtime=python39  # replace with your actual runtime
