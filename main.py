@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
 import logging
+import functions_framework
 
 
 def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, password):
@@ -23,6 +24,7 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
     server.sendmail(from_addr, to_addr, text)
     server.quit()
 
+@functions_framework.http
 def check_website(request):
 
     project_id = 'website-checker-v2'
@@ -37,7 +39,7 @@ def check_website(request):
     # }
     
     response = requests.get(url)
-    return response
+    return response.raise_for_status()
     # status_code = response.status_code
     # current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
