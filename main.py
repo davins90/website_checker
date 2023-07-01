@@ -62,7 +62,7 @@ def check_website(request):
         return 'Website content changed', 200
     else:
         send_email(
-            'Website Content Unchanged...',
+            'Website Content Unchanged..',
             f'Ciao. The content of the website {url} has not changed. Status code here: {status_code}',
             sender_email,
             receiver_email,
