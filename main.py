@@ -71,4 +71,5 @@ def check_website(request):
         return 'Website content unchanged', 200
 
 if __name__ == '__main__':
+    print("ciao")
     check_website(request=None)
