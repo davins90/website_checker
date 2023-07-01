@@ -35,7 +35,7 @@ def check_website(request):
     headers = {
         "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url)
     status_code = response.status_code
     return status_code
     # current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
