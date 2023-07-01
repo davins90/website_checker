@@ -24,6 +24,7 @@ def send_email(subject, message, from_addr, to_addr, smtp_server, smtp_port, pas
     server.sendmail(from_addr, to_addr, text)
     server.quit()
 
+@functions_framework.http
 def check_website(request):
     project_id = 'website-checker-v2'
     secret_manager = secretmanager.SecretManagerServiceClient()
