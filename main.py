@@ -36,7 +36,8 @@ def check_website(request):
     headers = {
         "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
     }
-    return requests.get(url,headers)
+#    return headers  
+#     response = requests.get(url,headers)
 #     status_code = response.status_code
 #     current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
@@ -51,28 +52,29 @@ def check_website(request):
 
 #     blob.upload_from_string(current_hash)
 
-#     if old_hash != current_hash:
-#         send_email(
-#             'Website Content Changed!',
-#             f'Ciao. The content of the website {url} has changed. Status code here: {status_code}',
-#             sender_email,
-#             receiver_email,
-#             'smtp.gmail.com',
-#             587,
-#             sender_password
-#         )
-#         return 'Website content changed', 200
-#     else:
-#         send_email(
-#             'Website Content Unchanged..',
-#             f'Ciao. The content of the website {url} has not changed. Status code here: {status_code}',
-#             sender_email,
-#             receiver_email,
-#             'smtp.gmail.com',
-#             587,
-#             sender_password
-#         )
-#         return 'Website content unchanged', 200
+    # if old_hash != current_hash:
+    if 'Mozilla' in headers: 
+        send_email(
+            'Website Content Changed!',
+            f'Ciao. The content of the website {url} has changed. Status code here: {status_code}',
+            sender_email,
+            receiver_email,
+            'smtp.gmail.com',
+            587,
+            sender_password
+        )
+        return 'Website content changed', 200
+    else:
+        send_email(
+            'Website Content Unchanged..',
+            f'Ciao. The content of the website {url} has not changed. Status code here: {status_code}',
+            sender_email,
+            receiver_email,
+            'smtp.gmail.com',
+            587,
+            sender_password
+        )
+        return 'Website content unchanged', 200
 
-# if __name__ == '__main__':
-#     check_website(request=None)
+if __name__ == '__main__':
+    check_website(request=None)
