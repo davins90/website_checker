@@ -56,7 +56,7 @@ def check_website(request):
     if 'Mozilla' in headers: 
         send_email(
             'Website Content Changed!',
-            f'Ciao. The content of the website {url} has changed. Status code here: {status_code}',
+            f'Ciao. The content of the website {url} has changed.',
             sender_email,
             receiver_email,
             'smtp.gmail.com',
@@ -67,7 +67,7 @@ def check_website(request):
     else:
         send_email(
             'Website Content Unchanged..',
-            f'Ciao. The content of the website {url} has not changed. Status code here: {status_code}',
+            f'Ciao. The content of the website {url} has not changed.',
             sender_email,
             receiver_email,
             'smtp.gmail.com',
