@@ -34,14 +34,10 @@ def check_website(request):
 
     url = "https://www.ticketone.it/artist/cigarettes-after-sex/"
     headers = {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET",
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Max-Age": "3600",
-        }
-    
-    response = requests.get(url,headers)
-    return response
+        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+    }
+    return headers  
+#     response = requests.get(url,headers)
 #     status_code = response.status_code
 #     current_hash = hashlib.sha224(response.text.encode('utf-8')).hexdigest()
     
@@ -79,6 +75,5 @@ def check_website(request):
 #         )
 #         return 'Website content unchanged', 200
 
-if __name__ == '__main__':
-    logging.info("ciao")
-    check_website(request=None)
+# if __name__ == '__main__':
+#     check_website(request=None)
